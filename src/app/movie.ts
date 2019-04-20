@@ -3,7 +3,7 @@ export class Movie {
   name: string;
   key: string;
   description: string;
-  // genres: [];
+  genres: [];
   rate: number;
   length: string;
   img: string;

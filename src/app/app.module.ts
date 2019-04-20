@@ -1,20 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-
+import {MatCardModule} from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
+import {MatButtonModule} from '@angular/material/button';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MoviesComponent
+    MoviesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    Ng2SearchPipeModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

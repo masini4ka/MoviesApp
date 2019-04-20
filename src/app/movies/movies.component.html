@@ -1,7 +1,22 @@
-<h2>{{movie.name | uppercase}} Details</h2>
-<div><span>id: </span>{{movie.id}}</div>
-<div>
-  <label>name:
-    <input [(ngModel)]="movie.name" placeholder="name"/>
-  </label>
+<div class="container">
+  <!-- Search form -->
+  <div class="search-hero">
+    <input class="form-control widget" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a movie by id or name "/>
+  </div>
+<div class="row intemsBlock">
+  <div *ngFor="let mov of movies | filter:searchText" class="col-md-3 col-sm-6 col-12">
+      <div class="card widget center-block" >
+        <img src="{{imagepath+mov.img}}" class="card-img-top" alt="..."/>
+        <div class="card-body">
+          <h5 class="card-title">{{mov.name}}</h5>
+          <p class="card-text">{{mov.genres}}</p>
+          <img src="assets/images/star-icon.png" width="32" height="32"/>
+              <p class="card-text">{{mov.rate}}</p>
+          <a href="#" class="btn btn-primary">More</a>
+        </div>
+      </div>
+      </div>
+  </div>
 </div>
+
+
