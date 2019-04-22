@@ -8,11 +8,13 @@ import { MoviesComponent } from './movies/movies.component';
 import {MatButtonModule} from '@angular/material/button';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-
+import { MoviedetailComponent } from './moviedetail/moviedetail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
+    MoviedetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     MatCardModule,
     MatButtonModule,
     Ng2SearchPipeModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

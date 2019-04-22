@@ -4,17 +4,30 @@
     <input class="form-control widget" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a movie by id or name "/>
   </div>
 <div class="row intemsBlock">
-  <div *ngFor="let mov of movies | filter:searchText" class="col-md-3 col-sm-6 col-12">
-      <div class="card widget center-block" >
+  <div *ngFor="let mov of movies$ | async | filter:searchText" class="col-md-3 col-sm-6 col-12" [class.selected]="mov.id === selectedId">
+    <a [routerLink]="['/movie', mov.id]" >
+    <div class="card widget center-block" >
         <img src="{{imagepath+mov.img}}" class="card-img-top" alt="..."/>
         <div class="card-body">
           <h5 class="card-title">{{mov.name}}</h5>
-          <p class="card-text">{{mov.genres}}</p>
+          <div *ngFor="let genre of mov.genres">
+            <span *ngIf="genre == 'comedy'" class="badge badge-pill badge-success">{{genre}}</span>
+            <span *ngIf="genre == 'action'" class="badge badge-pill badge-primary">{{genre}}</span>
+            <span *ngIf="genre == 'adventure'" class="badge badge-pill badge-success">{{genre}}</span>
+            <span *ngIf="genre == 'biography'" class="badge badge-pill badge-info">{{genre}}</span>
+            <span *ngIf="genre == 'crime'" class="badge badge-pill badge-danger">{{genre}}</span>
+            <span *ngIf="genre == 'drama'" class="badge badge-pill badge-dark">{{genre}}</span>
+            <span *ngIf="genre == 'history'" class="badge badge-pill badge-info">{{genre}}</span>
+            <span *ngIf="genre == 'mystery'" class="badge badge-pill badge-dark">{{genre}}</span>
+            <span *ngIf="genre == 'scifi'" class="badge badge-pill badge-secondary">{{genre}}</span>
+            <span *ngIf="genre == 'sport'" class="badge badge-pill badge-success">{{genre}}</span>
+            <span *ngIf="genre == 'thriller'" class="badge badge-pill badge-dark">{{genre}}</span>
+          </div>
           <img src="assets/images/star-icon.png" width="32" height="32"/>
               <p class="card-text">{{mov.rate}}</p>
-          <a href="#" class="btn btn-primary">More</a>
         </div>
       </div>
+    </a>
       </div>
   </div>
 </div>
