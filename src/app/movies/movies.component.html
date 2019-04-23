@@ -1,5 +1,9 @@
 <div class="container">
-  <!-- Search form -->
+  <div class="dropdown">
+    <select [(ngModel)]="selected" name="genre" placeholder="select genre" (ngModelChange)="onOptionsSelected($event)">
+      <option *ngFor="let genre of genres">{{genre}}</option>
+    </select>
+  </div>
   <div class="search-hero">
     <input class="form-control widget" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a movie by id or name "/>
   </div>
@@ -10,7 +14,7 @@
         <img src="{{imagepath+mov.img}}" class="card-img-top" alt="..."/>
         <div class="card-body">
           <h5 class="card-title">{{mov.name}}</h5>
-          <div *ngFor="let genre of mov.genres">
+          <span *ngFor="let genre of mov.genres">
             <span *ngIf="genre == 'comedy'" class="badge badge-pill badge-success">{{genre}}</span>
             <span *ngIf="genre == 'action'" class="badge badge-pill badge-primary">{{genre}}</span>
             <span *ngIf="genre == 'adventure'" class="badge badge-pill badge-success">{{genre}}</span>
@@ -22,9 +26,11 @@
             <span *ngIf="genre == 'scifi'" class="badge badge-pill badge-secondary">{{genre}}</span>
             <span *ngIf="genre == 'sport'" class="badge badge-pill badge-success">{{genre}}</span>
             <span *ngIf="genre == 'thriller'" class="badge badge-pill badge-dark">{{genre}}</span>
-          </div>
-          <img src="assets/images/star-icon.png" width="32" height="32"/>
+          </span>
+          <div>
+              <img src="assets/images/star-icon.png" width="32" height="32"/>
               <p class="card-text">{{mov.rate}}</p>
+          </div>
         </div>
       </div>
     </a>

@@ -1,15 +1,40 @@
-<h2>Movies</h2>
+<div>
 <div *ngIf="movies$ | async as movie">
-  <h3>"{{ movie.name }}"</h3>
-  <div>
-    <label>Id: </label>{{ movie.id }}</div>
-  <div>
-    <label>Name: </label>
-    <input [(ngModel)]="movie.name" placeholder="name"/>
-  </div>
+      <div class="row">
+      <div class="col-md-2 col-sm-6 col-12">
+            <div class="card widget center-block" >
+                  <img src="{{imagepath+movie.img}}" class="card-img-top" />
+                  <div class="card-body">
+                      <h5 class="card-title">"{{ movie.name }}"</h5>
+                      <span *ngFor="let genre of movie.genres">
+                        <span *ngIf="genre == 'comedy'" class="badge badge-pill badge-success">{{genre}}</span>
+                              <span *ngIf="genre == 'action'" class="badge badge-pill badge-primary">{{genre}}</span>
+                              <span *ngIf="genre == 'adventure'" class="badge badge-pill badge-success">{{genre}}</span>
+                              <span *ngIf="genre == 'biography'" class="badge badge-pill badge-info">{{genre}}</span>
+                              <span *ngIf="genre == 'crime'" class="badge badge-pill badge-danger">{{genre}}</span>
+                              <span *ngIf="genre == 'drama'" class="badge badge-pill badge-dark">{{genre}}</span>
+                              <span *ngIf="genre == 'history'" class="badge badge-pill badge-info">{{genre}}</span>
+                              <span *ngIf="genre == 'mystery'" class="badge badge-pill badge-dark">{{genre}}</span>
+                              <span *ngIf="genre == 'scifi'" class="badge badge-pill badge-secondary">{{genre}}</span>
+                              <span *ngIf="genre == 'sport'" class="badge badge-pill badge-success">{{genre}}</span>
+                              <span *ngIf="genre == 'thriller'" class="badge badge-pill badge-dark">{{genre}}</span>
+                      </span>
+                    <div>
+                    <img src="assets/images/star-icon.png" width="32" height="32"/>
+                      <p class="card-text">{{movie.rate}}</p>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            Description: {{movie.description}}
+            Length: {{movie.length}}
+          </div>
+    </div>
+</div>
   <p>
     <button (click)="gotoMovies(movie)">Back</button>
   </p>
 </div>
-<!--<h1>moviedetailhere</h1>-->
+
 <router-outlet></router-outlet>
