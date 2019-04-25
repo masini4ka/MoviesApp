@@ -1,6 +1,6 @@
 # AngMovies
 
-Web application for movies collection built with Angular. 
+Web application for movies collection built with Angular. App allows viewing movies collection, informations about a chosen movie (description, rating, length, genre, etc.), search for a movie, filter movies by genre. 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
 ## Development server
