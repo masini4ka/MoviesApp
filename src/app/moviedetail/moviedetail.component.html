@@ -1,12 +1,13 @@
-<div>
-  <div *ngIf="movies$ | async as movie">
-    <div class="row">
-      <div class="col-md-2 col-sm-6 col-12">
-        <div class="card widget center-block" >
-          <img src="{{imagepath+movie.img}}" class="card-img-top" />
-          <div class="card-body">
-            <h5 class="card-title">"{{ movie.name }}"</h5>
-            <span *ngFor="let genre of movie.genres">
+<div *ngIf="movies$ | async as movie">
+  <div class="row">
+    <div class="column"></div>
+    <div class="column">
+    <div class="col-md-2 col-sm-6 col-12">
+      <div class="card widget center-block">
+        <img class="card-img-top" src="{{imagepath+movie.img}}"/>
+        <div class="card-body">
+          <h5 class="card-title">"{{ movie.name }}"</h5>
+          <span *ngFor="let genre of movie.genres">
                         <span *ngIf="genre == 'comedy'" class="badge badge-pill badge-success">{{genre}}</span>
                               <span *ngIf="genre == 'action'" class="badge badge-pill badge-primary">{{genre}}</span>
                               <span *ngIf="genre == 'adventure'" class="badge badge-pill badge-success">{{genre}}</span>
@@ -19,23 +20,23 @@
                               <span *ngIf="genre == 'sport'" class="badge badge-pill badge-success">{{genre}}</span>
                               <span *ngIf="genre == 'thriller'" class="badge badge-pill badge-dark">{{genre}}</span>
                       </span>
-            <div>
-              <img src="assets/images/star-icon.png" width="32" height="32"/>
-              <p class="card-text">{{movie.rate}}</p>
-            </div>
+          <div>
+            <img height="32" src="assets/images/star-icon.png" width="32"/>
+            <p class="card-text">{{movie.rate}}</p>
           </div>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <ul>Description: {{movie.description}}</ul>
-        <ul>Length: {{movie.length}}</ul>
-      </div>
-
     </div>
-    <p>
-      <button class="btn btn-outline-primary" (click)="gotoMovies(movie)">Back</button>
-    </p>
+    <div class="col-md-4 col-sm-6">
+      <ul>Description: {{movie.description}}</ul>
+      <ul>Length: {{movie.length}}</ul>
+    </div>
   </div>
+  <p>
+    <button (click)="gotoMovies(movie)" class="btn btn-outline-primary">Back</button>
+  </p>
+    </div>
 </div>
+
 
 <router-outlet></router-outlet>
