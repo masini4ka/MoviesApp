@@ -14,10 +14,10 @@ app.get('/*', function(req,res) {
 
 var port = process.env.PORT || 8000;
 // Start the app by listening on the default Heroku port
-server.listen(port, () => {
-  console.log("App is running on port " + port);
+var server_host = process.env.HOST || '0.0.0.0';
+server.listen(port, server_host, function() {
+  console.log('Listening on port %d and host %s', port, server_host);
 });
-
 // server.listen(port, () => {
 //   console.log("App is running on port " + port);
 // });
