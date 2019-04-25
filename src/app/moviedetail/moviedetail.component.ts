@@ -4,6 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Movie} from '../movie';
 import {MovieDataService} from '../services/movie-data.service';
+
 @Component({
   selector: 'app-moviedetail',
   templateUrl: './moviedetail.component.html',

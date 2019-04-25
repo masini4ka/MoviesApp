@@ -10,6 +10,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MoviedetailComponent } from './moviedetail/moviedetail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +28,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Ng2SearchPipeModule,
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    MatSelectModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

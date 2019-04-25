@@ -1,11 +1,18 @@
+<!--<div class="bg-image">-->
+
 <div class="container">
-  <div class="dropdown">
-    <select [(ngModel)]="selected" name="genre" placeholder="select genre" (ngModelChange)="onOptionsSelected($event)">
-      <option *ngFor="let genre of genres">{{genre}}</option>
-    </select>
-  </div>
+  <form>
+    <div class="form-group">
+      <label for="sel1">Select genre:</label>
+      <select [(ngModel)]="selected" name="genre" class="form-control" placeholder="select genre" id="sel1" (ngModelChange)="onOptionsSelected($event)">
+        <option *ngFor="let genre of genres">{{genre}}</option>
+      </select>
+    </div>
+  </form>
+<!--</div>-->
+<!--<div class="container">-->
   <div class="search-hero">
-    <input class="form-control widget" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a movie by id or name "/>
+    <input class="form-control widget" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a movie"/>
   </div>
 <div class="row intemsBlock">
   <div *ngFor="let mov of movies$ | async | filter:searchText" class="col-md-3 col-sm-6 col-12" [class.selected]="mov.id === selectedId">
@@ -37,5 +44,4 @@
       </div>
   </div>
 </div>
-
-
+<!--</div>-->
