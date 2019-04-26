@@ -1,7 +1,7 @@
 
   <div *ngIf="movies$ | async as movie">
     <div class="row">
-      <div class="col-md-2 col-sm-6 col-12">
+      <div class="col-md-3 col-sm-6 col-12">
         <div class="card widget center-block" >
           <img src="{{imagepath+movie.img}}" class="card-img-top" />
           <div class="card-body">
@@ -26,15 +26,16 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <ul>Description: {{movie.description}}</ul>
-        <ul>Length: {{movie.length}}</ul>
+      <div class="col-md-4 col-sm-6"><br>
+        <ul><strong>Description:</strong> {{movie.description}}</ul>
+        <ul><strong>Length:</strong>{{movie.length}}</ul>
+        <ul>
+          <button class="btn btn-outline-primary" (click)="gotoMovies(movie)">Back</button>
+        </ul>
       </div>
 
     </div>
-      <p>
-        <button class="btn btn-outline-primary" (click)="gotoMovies(movie)">Back</button>
-      </p>
+
   </div>
 
 

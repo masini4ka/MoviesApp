@@ -1,27 +1,31 @@
 <!--<div class="bg-image">-->
 
 <div class="container">
-  <form>
-    <div class="form-group">
-      <label for="sel1">Select genre:</label>
-      <select [(ngModel)]="selected" name="genre" class="form-control" placeholder="select genre" id="sel1" (ngModelChange)="onOptionsSelected($event)">
-        <option *ngFor="let genre of genres">{{genre}}</option>
-      </select>
+
+    <div class="classinline">
+      <form>
+        <div class="form-group">
+          <label for="sel1">Select genre:</label>
+          <select [(ngModel)]="selected" name="genre" class="form-control custom-select" placeholder="select genre" id="sel1" (ngModelChange)="onOptionsSelected($event)">
+            <option *ngFor="let genre of genres">{{genre}}</option>
+          </select>
+        </div>
+      </form>
     </div>
-  </form>
-<!--</div>-->
-<!--<div class="container">-->
-  <div class="search-hero">
-    <input class="form-control widget" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a movie"/>
-  </div>
-<div class="row intemsBlock">
-  <div *ngFor="let mov of movies$ | async | filter:searchText" class="col-md-3 col-sm-6 col-12" [class.selected]="mov.id === selectedId">
-    <a [routerLink]="['/movie', mov.id]" >
-    <div class="card widget center-block" >
-        <img src="{{imagepath+mov.img}}" class="card-img-top" alt="..."/>
-        <div class="card-body">
-          <h5 class="card-title">{{mov.name}}</h5>
-          <span *ngFor="let genre of mov.genres">
+    <div class="classinline2">
+      <div class="search-hero">
+        <input class="form-control widget" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a movie"/>
+      </div>
+    </div>
+
+  <div class="row intemsBlock">
+    <div *ngFor="let mov of movies$ | async | filter:searchText" class="col-md-3 col-sm-6 col-12" [class.selected]="mov.id === selectedId">
+      <a [routerLink]="['/movie', mov.id]" >
+        <div class="card widget center-block" >
+          <img src="{{imagepath+mov.img}}" class="card-img-top" alt="..."/>
+          <div class="card-body">
+            <h5 class="card-title">{{mov.name}}</h5>
+            <span *ngFor="let genre of mov.genres">
             <span *ngIf="genre == 'comedy'" class="badge badge-pill badge-success">{{genre}}</span>
             <span *ngIf="genre == 'action'" class="badge badge-pill badge-primary">{{genre}}</span>
             <span *ngIf="genre == 'adventure'" class="badge badge-pill badge-success">{{genre}}</span>
@@ -34,14 +38,14 @@
             <span *ngIf="genre == 'sport'" class="badge badge-pill badge-success">{{genre}}</span>
             <span *ngIf="genre == 'thriller'" class="badge badge-pill badge-dark">{{genre}}</span>
           </span>
-          <div>
+            <div>
               <img src="assets/images/star-icon.png" width="32" height="32"/>
               <p class="card-text">{{mov.rate}}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </a>
-      </div>
+      </a>
+    </div>
   </div>
 </div>
 <!--</div>-->
