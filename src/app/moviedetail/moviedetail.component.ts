@@ -4,7 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Movie} from '../movie';
 import {MovieDataService} from '../services/movie-data.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-moviedetail',
   templateUrl: './moviedetail.component.html',
@@ -17,7 +17,8 @@ export class MoviedetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: MovieDataService
+    private service: MovieDataService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -28,8 +29,9 @@ export class MoviedetailComponent implements OnInit {
     this.imagepath = 'assets/images/movie-covers/';
   }
   gotoMovies(movie: Movie) {
-    let movieid = movie ? movie.id : null;
-    this.router.navigate(['/movies', { id: movieid}]);
+    // let movieid = movie.id ? movie.id : null;
+    // this.router.navigate(['/movies', { id: movieid}]);
+    this.location.back();
   }
 
 }

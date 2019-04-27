@@ -6,7 +6,7 @@
       <form>
         <div class="form-group">
           <label for="sel1">Select genre:</label>
-          <select [(ngModel)]="selected" name="genre" class="form-control custom-select" placeholder="select genre" id="sel1" (ngModelChange)="onOptionsSelected($event)">
+          <select [(ngModel)]="selected"  name="genre" class="form-control custom-select" placeholder="select genre" id="sel1" (ngModelChange)="onOptionsSelected($event)">
             <option *ngFor="let genre of genres">{{genre}}</option>
           </select>
         </div>
@@ -19,7 +19,7 @@
     </div>
 
   <div class="row intemsBlock">
-    <div *ngFor="let mov of movies$ | async | filter:searchText" class="col-md-3 col-sm-6 col-12" [class.selected]="mov.id === selectedId">
+    <div *ngFor="let mov of movies$ | async | filter:searchText" class="col-md-3 col-sm-6 col-12" >
       <a [routerLink]="['/movie', mov.id]" >
         <div class="card widget center-block" >
           <img src="{{imagepath+mov.img}}" class="card-img-top" alt="..."/>
