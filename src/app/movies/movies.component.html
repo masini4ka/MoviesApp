@@ -20,7 +20,7 @@
 
   <div class="row intemsBlock">
     <div *ngFor="let mov of movies$ | async | filter:searchText" class="col-md-3 col-sm-6 col-12" >
-      <a [routerLink]="['/movie', mov.id]" >
+      <a [routerLink]="['/movie', mov.id]" [queryParams]="{ searchParams: searchText}">
         <div class="card widget center-block" >
           <img src="{{imagepath+mov.img}}" class="card-img-top" alt="..."/>
           <div class="card-body">

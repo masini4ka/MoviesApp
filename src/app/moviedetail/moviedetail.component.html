@@ -30,7 +30,7 @@
         <ul><strong>Description:</strong> {{movie.description}}</ul>
         <ul><strong>Length:</strong>{{movie.length}}</ul>
         <ul>
-          <button class="btn btn-outline-primary" (click)="gotoMovies(movie)">Back</button>
+          <button class="btn btn-outline-primary" [routerLink]="['/movies']" queryParamsHandling="preserve">Back</button>
         </ul>
       </div>
 

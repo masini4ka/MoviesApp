@@ -17,7 +17,6 @@ export class MoviesComponent implements OnInit {
   selectedId: number;
   selected: any;
   genres: string[];
-  selectedGenre = '';
   imagepath: any;
   searchText: string;
   constructor(private dataservice: MovieDataService,  private route: ActivatedRoute, private router: Router) { }
@@ -25,13 +24,14 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.getMovies();
     this.imagepath = 'assets/images/movie-covers/';
-    this.searchText = '';
     this.genres = ['action' , 'adventure' , 'biography' , 'comedy' , 'crime'
      , 'drama' , 'history' , 'mystery' , 'scifi' , 'sport', 'thriller'];
-    // this.movies$.subscribe(x => console.log(x));
-    // if (paramId) {
-    //   this.onOptionsSelected(paramId);
-    // }
+    if (this.route.snapshot.queryParamMap.has('searchParams')){
+      this.searchText = this.route.snapshot.queryParamMap.get('searchParams')
+    } else {
+      this.searchText = '';
+    }
+
   }
   getMovies(): Observable<Movie[]> {
     return this.movies$ = this.route.paramMap.pipe(
@@ -43,12 +43,12 @@ export class MoviesComponent implements OnInit {
       }));
   }
   onOptionsSelected(name: string)  {
-    if (name != null){
+    if (name != null) {
       this.filtered = this.movies$  = this.dataservice.getMovies().pipe(
         map((movies: Movie[]) => movies.filter(p => p.genres.includes(name)))
       );
-      this.selectedGenre = name;
-      this.router.navigate(['/movies', { genre: this.selectedGenre}]);
+      this.selected = name;
+      this.router.navigate(['/movies', { genre: this.selected}]);
     }
   }
 
