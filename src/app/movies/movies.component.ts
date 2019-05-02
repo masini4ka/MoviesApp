@@ -26,12 +26,15 @@ export class MoviesComponent implements OnInit {
     this.imagepath = 'assets/images/movie-covers/';
     this.genres = ['action' , 'adventure' , 'biography' , 'comedy' , 'crime'
      , 'drama' , 'history' , 'mystery' , 'scifi' , 'sport', 'thriller'];
-    if (this.route.snapshot.queryParamMap.has('searchParams')){
-      this.searchText = this.route.snapshot.queryParamMap.get('searchParams')
+    if (this.route.snapshot.queryParamMap.has('searchParams')) {
+      this.searchText = this.route.snapshot.queryParamMap.get('searchParams');
     } else {
       this.searchText = '';
     }
-
+    if (this.route.snapshot.queryParamMap.has('genre')) {
+      this.selected = this.route.snapshot.queryParamMap.get('genre');
+      this.onOptionsSelected(this.selected);
+    }
   }
   getMovies(): Observable<Movie[]> {
     return this.movies$ = this.route.paramMap.pipe(
@@ -48,8 +51,12 @@ export class MoviesComponent implements OnInit {
         map((movies: Movie[]) => movies.filter(p => p.genres.includes(name)))
       );
       this.selected = name;
-      this.router.navigate(['/movies', { genre: this.selected}]);
+      this.router.navigate(['/movies'], { queryParams: { genre: this.selected}, queryParamsHandling: 'merge'});
     }
+  }
+  onSearch()  {
+    this.router.navigate(['/movies'], { queryParams: { searchParams: this.searchText}, queryParamsHandling: 'merge'});
+
   }
 
 }

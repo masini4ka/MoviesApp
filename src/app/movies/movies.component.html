@@ -6,7 +6,7 @@
       <form>
         <div class="form-group">
           <label for="sel1">Select genre:</label>
-          <select [(ngModel)]="selected"  name="genre" class="form-control custom-select" placeholder="select genre" id="sel1" (ngModelChange)="onOptionsSelected($event)">
+          <select [(ngModel)]="selected"  name="genre" class="form-control custom-select" placeholder="select genre" id="sel1" queryParamsHandling="merge" (ngModelChange)="onOptionsSelected($event)">
             <option *ngFor="let genre of genres">{{genre}}</option>
           </select>
         </div>
@@ -14,13 +14,13 @@
     </div>
     <div class="classinline2">
       <div class="search-hero">
-        <input class="form-control widget" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a movie"/>
+        <input class="form-control widget" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a movie" (ngModelChange)="onSearch()"/>
       </div>
     </div>
 
   <div class="row intemsBlock">
     <div *ngFor="let mov of movies$ | async | filter:searchText" class="col-md-3 col-sm-6 col-12" >
-      <a [routerLink]="['/movie', mov.id]" [queryParams]="{ searchParams: searchText}">
+      <a [routerLink]="['/movie', mov.id]" [queryParams]="{ genre: selected, searchParams: searchText} ">
         <div class="card widget center-block" >
           <img src="{{imagepath+mov.img}}" class="card-img-top" alt="..."/>
           <div class="card-body">
