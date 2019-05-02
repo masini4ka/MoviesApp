@@ -7,6 +7,7 @@
         <div class="form-group">
           <label for="sel1">Select genre:</label>
           <select [(ngModel)]="selected"  name="genre" class="form-control custom-select" placeholder="select genre" id="sel1" queryParamsHandling="merge" (ngModelChange)="onOptionsSelected($event)">
+            <option [ngValue]="null">All</option>
             <option *ngFor="let genre of genres">{{genre}}</option>
           </select>
         </div>

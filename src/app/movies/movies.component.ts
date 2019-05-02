@@ -52,6 +52,9 @@ export class MoviesComponent implements OnInit {
       );
       this.selected = name;
       this.router.navigate(['/movies'], { queryParams: { genre: this.selected}, queryParamsHandling: 'merge'});
+    } else {
+      this.filtered = this.movies$  = this.dataservice.getMovies();
+      this.router.navigate(['/movies'], { queryParams: { genre: this.selected}, queryParamsHandling: 'merge'});
     }
   }
   onSearch()  {
