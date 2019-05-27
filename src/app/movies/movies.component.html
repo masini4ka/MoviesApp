@@ -1,5 +1,4 @@
 <!--<div class="bg-image">-->
-
 <div class="container">
 
     <div class="classinline">
@@ -18,10 +17,15 @@
         <input class="form-control widget" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a movie" (ngModelChange)="onSearch()"/>
       </div>
     </div>
+  <div class="classinline3">
+    <button type="button" class="btn btn-default btn-sm" (click)= "clear()">
+         X
+    </button>
+  </div>
 
   <div class="row intemsBlock">
     <div *ngFor="let mov of movies$ | async | filter:searchText" class="col-md-3 col-sm-6 col-12" >
-      <a [routerLink]="['/movie', mov.id]" [queryParams]="{ genre: selected, searchParams: searchText} ">
+      <a [routerLink]="['/movies', mov.id]" [queryParams]="{ genre: selected, searchParams: searchText} ">
         <div class="card widget center-block" >
           <img src="{{imagepath+mov.img}}" class="card-img-top" alt="..."/>
           <div class="card-body">

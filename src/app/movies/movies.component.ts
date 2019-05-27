@@ -59,7 +59,10 @@ export class MoviesComponent implements OnInit {
   }
   onSearch()  {
     this.router.navigate(['/movies'], { queryParams: { searchParams: this.searchText}, queryParamsHandling: 'merge'});
-
+  }
+  clear() {
+    this.searchText = '';
+    this.router.navigate([], { queryParams: { searchParams: null}, queryParamsHandling: 'merge'});
   }
 
 }
